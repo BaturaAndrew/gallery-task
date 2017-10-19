@@ -18,10 +18,12 @@
   // Setup routes
   app.phase(bootable.routes('routes/', app));
 
+app.set('port', process.env.PORT || 3000);
+
   // Boot app
   app.boot(function (err) {
     if (err) { throw err; }
-    app.listen(3000, function () {
+    app.listen(app.get('port'), function () {
       log.info('Express listen port', config.get('express.port'));
     });
   });
