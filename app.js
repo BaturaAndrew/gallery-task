@@ -21,7 +21,7 @@
   // Boot app
   app.boot(function (err) {
     if (err) { throw err; }
-    app.listen(config.get('express.port'), function () {
+    app.listen(3000, function () {
       log.info('Express listen port', config.get('express.port'));
     });
   });
