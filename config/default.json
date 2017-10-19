@@ -1,0 +1,9 @@
+{
+  "express": {
+    "port": 3000
+  },
+  "mongoose": {
+    //"db": "mongodb://localhost/passport-example-auth" 
+     "db": "mongodb://admin:back_rock17@ds023408.mlab.com:23408/heroku_jfs9knw5"
+  }
+}

@@ -1,0 +1,12 @@
+form(class="form-horizontal signUpForm" action='/login' method='post')
+  div( class="form-group")
+   label(for='username' ) User Name
+   div( class="col-sm-4")
+    input(type='text'  class="form-control"  name='username' )
+  div( class="form-group")
+   label(for='password' ) Password
+   div( class="col-sm-4")
+    input(type='password'  class="form-control"  name='password' placeholder='Your Password' required)
+  div( class="form-group")
+   div( class="col-sm-offset-2 col-sm-4")
+    button(type='Login' class="btn btn-default") Login

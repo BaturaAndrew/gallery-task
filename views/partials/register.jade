@@ -1,0 +1,17 @@
+form( class="form-horizontal regForm" action='/register' method='post')
+  div( class="form-group")
+    label(for='name') User Name
+    div( class="col-sm-4")
+      input(type='text'  class="form-control"  name='username'  pattern="[a-zA-Z]{1,20}" required)
+  div( class="form-group")
+    label(for='email') Email
+    div( class="col-sm-4")
+      input(type='email'  class="form-control"  name='email'  required)
+  div( class="form-group")
+    label(for='password') Password
+    div( class="col-sm-4")
+      input(type='password'   class="form-control" name='password' placeholder='Your Password' pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}"
+       title="password - required, at least 6 characters long, at least one lowercase letter, one uppercase letter, one digit, no special symbols")
+  div( class="form-group")
+    div( class="col-sm-offset-2 col-sm-4")
+      button(type='Register'  class="btn btn-default") Register

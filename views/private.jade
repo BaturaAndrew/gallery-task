@@ -1,0 +1,66 @@
+extends ./layouts/main.jade
+block content
+  h1 Hello, #{username}
+   img(src="/img/firework.gif" width="100" id="firework" height="122" class="rightpic")
+  form(class="navbar-form" role="form" method="post" action="/filter")
+   div( class="input-append ui-widget")
+    label(for="tags" ) Tags: 
+    input(type="text" id="tags" class="form-control" name="mask")
+    button( type="submit" class="btn btn-default") Find   
+  //- модальное окно
+  div( class="dm-overlay" id="win1")
+      div( class="dm-table")
+          div( class="dm-cell")
+              div( class="dm-modal")
+                a( href="#close" class="close")
+                form( class="form-horizontal" role="form"  enctype="multipart/form-data" method="post" action="/private")
+                 include ./partials/adding-new-images.jade
+  //- отображание фотографий
+  section
+   ul(id="gallery")
+    li(id="fullPreview")
+      //- кнопка вызова модального окна
+    a( href="#win1" class="btn") 
+     img( src="/img/addImage.png" alt="Add Images" width="240" height="150" style="display: inline;" )
+    -each item in photos
+     li
+      a(href="#{item.path}" )
+      img( data-original="#{item.path}" src="#{item.path}" alt=""  width="240" height="150" style="display: inline;")
+      div( class="overLayer")
+      div( class="infoLayer")
+        ul
+          li
+           h3 #{item.namephoto}
+          li 
+           p View
+          li 
+           p #{item.tag}
+      div( class="projectInfo") #{item.tag}
+  script.
+    //- $('document').ready(function(){$('h1').html('jQuery работает');});
+    $("#firework").show('slow');
+     setTimeout(function() { $("#firework").hide('slow'); }, 3000);
+    $( function() {
+       var availableTags = [
+      'nature',
+      "sport",
+      'cars',
+      'girls',
+      'electronics',
+      'games',
+      'sea',
+      'forest',
+      'wallpapers',
+      'computers',
+      'footbol',
+      'work',
+      'abstractions'
+    ];
+
+      $('#tags').autocomplete({
+        source:availableTags
+      });
+    } );
+    $(document).ready(function(){
+    $('#gallery').least();
+    });

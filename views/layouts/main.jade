@@ -1,0 +1,14 @@
+doctype html
+html
+ include ../partials/head.jade
+  head
+    title= title
+  body.wrapper
+    //- div.wrapper
+    //- div.main-headding
+    include ../partials/menu.jade
+    div.content
+     header 
+      img( src="/img/gallery.png" alt="Галерея фотографий" style = "float:left; margin: 7px 7px 7px 0; " )
+     block content
+        hr

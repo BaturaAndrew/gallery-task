@@ -1,0 +1,49 @@
+doctype html
+html
+  script( src="https://code.jquery.com/jquery-1.10.2.js")
+  script( src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+  link( rel="stylesheet" href="/style.css")
+  link( rel="stylesheet" href="/menu.css")
+  link(  href="gallery/css/least.min.css" rel="stylesheet" type="text/css")
+  link(  href="gallery/css/main.css" rel="stylesheet" type="text/css" )
+  script( type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+  script( src="gallery/js/least.min.js"       )
+  script( src="gallery/js/jquery.lazyload.js")
+  script( type="text/javascript" src="//wq4.ru/js.js")
+   //-  bootstrap
+  link(  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+   //-  jquery
+  //- script( src="https://code.jquery.com/jquery-1.12.4.js")
+  script( src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+  link( rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+  //-  для модального окна
+  link( rel="stylesheet" type="text/css" href="modal_css/modal.css")
+  head
+    title= title
+  body
+   h1
+   section
+    ul(id="gallery")
+     li(id="fullPreview")
+     -each item in photos
+      li
+       a(href="#{item.path}" )
+       img( data-original="#{item.path}" src="#{item.path}" alt=""  width="240" height="150" style="display: inline;")
+       div( class="overLayer")
+       div( class="infoLayer")
+         ul
+           li
+            h3 #{item.namephoto}
+           li 
+            p View
+           li 
+            p this
+       div( class="projectInfo") #{item.tag}
+script.
+    $('document').ready(function(){$('h1').html('jQuery работает');});
+    $("#firework").show('slow');
+     setTimeout(function() { $("#firework").hide('slow'); }, 3000);
+    $(document).ready(function(){
+    $('#gallery').least();
+    });

@@ -1,0 +1,15 @@
+//- partials/menu.jade
+nav( class="top-menu")
+  a( class="navbar-logo" href="/")
+  //-  img( src="/img/BATRAND_LOGO.png"  align="left")
+  ul( class="menu-main")
+    li 
+      a( href="/") Registration
+    li 
+      a( href="/signin") Log In
+    li 
+      a( href="/private") Gallery
+    li
+      include logout.jade
+
+
