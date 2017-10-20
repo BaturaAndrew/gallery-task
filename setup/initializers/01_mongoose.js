@@ -38,10 +38,7 @@
     });
 
     try {
-      mongoose.connect(config.get('mongoose.db'), opts);
-      //  mongoose.connect("mongodb://localhost/passport-example-auth", opts);
-      // mongoose.connect( 'mongodb://baturaandrew:back_rock17@ds115085.mlab.com:15085/task', opts);
-      // mongoose.connect( 'mongodb://admin:back_rock17@ds023408.mlab.com:23408/heroku_jfs9knw5', opts);
+       mongoose.connect( 'mongodb://dmin:back_rock17@ds227525.mlab.com:27525/heroku_smq0l3r0', opts);
       log.info('Started connection on ' + (config.get('mongoose.db')) + ', waiting for it to open...');
     } catch (err) {
       log.error(('Setting up failed to connect to ' + config.get('mongoose:db')), err.message);
