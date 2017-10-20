@@ -21,13 +21,17 @@
         type: String,
         required: false
       },
+      tag_info: {
+        type: String,
+        required: false
+      },
       namephoto: {
         type: String,
         required: false
       },
       username: {
         type: String,
-        required: false
+        required: true
       },
     });
   

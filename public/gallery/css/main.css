@@ -8,9 +8,9 @@ section {
 }
 section li a,
 section li .overLayer, section li .infoLayer {
-    height: 187px;
+    height: 190px;
     width: 250px;
 }
 section li .infoLayer ul li {
-    padding: 5px 0 0;
+    padding: 3px 0 0;
 }

@@ -9,9 +9,7 @@
   var controllers = requireTree('../controllers');
   var mustAuthenticatedMw = require('../middlewares/must-authenticated');
   // End of dependencies.
-  var fortune = require('../lib/fortune.js');
-  var photos = require('../lib/get-path-photo.js');
-  var tags = require('../lib/get-tags-photo.js');
+  var fortune = require('../public/lib/fortune.js');
   // File input field name is simply 'photo'
   var multer = require('multer');
   var upload = multer({ dest: '/tmp' });
@@ -20,15 +18,15 @@
   module.exports = function () {
 
     // Only for registred users
-    this.all('/private', mustAuthenticatedMw);
-    this.all('/private/*', mustAuthenticatedMw);
+    // this.all('/private', mustAuthenticatedMw);
+    // this.all('/private/*', mustAuthenticatedMw);
 
     // Basic routes
     this.get('/', controllers.render('signup', { title: "Register" }));
     this.get('/signup', controllers.render('signup', { title: "Register" }));
 
     this.get('/private', function (req, res) {
-      Photo.find({ username: req.cookies.username}, function (err, photos) {
+      Photo.find({ username: req.cookies.username }, function (err, photos) {
         var context = {
           photos: photos.map(function (photo) {
             return {
@@ -39,13 +37,40 @@
           }),
           username: req.cookies.username,
           title: "Gallery",
+          fortune: fortune.getFortune()
         };
         res.render('private', context);
       });
     });
-   
 
-    this.get('/fail', controllers.render('fail', { title: "Fail" }));
+    // поиск фото по тегу
+    this.get('/search_photos', function (req, res) {
+      
+      var buildResultSet = function (docs) {
+        var result = [];
+        for (var object in docs) {
+          result.push(docs[object]);
+        }
+        return result;
+      }
+      var query = Photo.find({ username: req.cookies.username });
+      // Execute query in a callback and return  list
+      query.exec(function (err, tags) {
+        if (!err) {
+          // Method to construct the json result set
+          var result = buildResultSet(tags);
+          res.send(result, {
+            'Content-Type': 'application/json'
+          }, 200);
+        } else {
+          res.send(JSON.stringify(err), {
+            'Content-Type': 'application/json'
+          }, 404);
+        }
+        
+      });
+    });
+
     this.get('/500', controllers.render('500', { title: "500" }));
     this.get('/404', controllers.render('404', { title: "404" }));
     this.get('/error', controllers.render('error', { title: "Error" }));
@@ -77,7 +102,7 @@
       }
 
       else {
-        Photo.find({ username: req.cookies.username , tag: req.body.mask}, function (err, photos) {
+        Photo.find({ username: req.cookies.username, tag: req.body.mask }, function (err, photos) {
           var context = {
             photos: photos.map(function (photo) {
               return {
