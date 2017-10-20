@@ -38,7 +38,7 @@
     });
 
     try {
-       mongoose.connect( 'mongodb://dmin:back_rock17@ds227525.mlab.com:27525/heroku_smq0l3r0', opts);
+       mongoose.connect( 'mongodb://admin:back_rock17@ds227525.mlab.com:27525/heroku_smq0l3r0', opts);
       log.info('Started connection on ' + (config.get('mongoose.db')) + ', waiting for it to open...');
     } catch (err) {
       log.error(('Setting up failed to connect to ' + config.get('mongoose:db')), err.message);
