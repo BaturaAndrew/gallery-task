@@ -18,13 +18,15 @@
   // Setup routes
   app.phase(bootable.routes('routes/', app));
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT ||config.get('express.port'));
 
+app.set('env', 'development');
+global.env='development';
   // Boot app
   app.boot(function (err) {
     if (err) { throw err; }
     app.listen(app.get('port'), function () {
-      log.info('Express listen port', config.get('express.port'));
+      log.info('Express запущено в режиме ' + app.get('env') + 'на port', config.get('express.port'));
     });
   });
 
