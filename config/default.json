@@ -3,7 +3,6 @@
     "port": 3000
   },
   "mongoose": {
-    //"db": "mongodb://localhost/passport-example-auth" 
-         "db": "mongodb://admin:back_rock17@ds111851.mlab.com:11851/heroku_5fhgfx08"
+       "db": "mongodb://dmin:back_rock17@ds227525.mlab.com:27525/heroku_smq0l3r0"
   }
 }
