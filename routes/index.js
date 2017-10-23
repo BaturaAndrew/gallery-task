@@ -18,8 +18,8 @@
   module.exports = function () {
 
     // Only for registred users
-    // this.all('/private', mustAuthenticatedMw);
-    // this.all('/private/*', mustAuthenticatedMw);
+    this.all('/private', mustAuthenticatedMw);
+    this.all('/private/*', mustAuthenticatedMw);
 
     // Basic routes
     this.get('/', controllers.render('signup', { title: "Register" }));
