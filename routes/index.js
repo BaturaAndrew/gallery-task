@@ -95,6 +95,7 @@
             }),
             username: req.cookies.username,
             title: "Gallery",
+            fortune: fortune.getFortune()
           };
           console.log("выводим все картинки")
           res.render('private', context);
@@ -113,6 +114,7 @@
             }),
             username: req.cookies.username,
             title: "Gallery",
+            fortune: fortune.getFortune()
           };
           console.log("выводим картинки по тегу", req.body.mask)
           res.render('private', context);
