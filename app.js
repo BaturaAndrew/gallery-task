@@ -20,8 +20,8 @@
 
 app.set('port', process.env.PORT ||config.get('express.port'));
 
-app.set('env', 'development');
-global.env='development';
+app.set('env', 'production');
+global.env='production';
   // Boot app
   app.boot(function (err) {
     if (err) { throw err; }

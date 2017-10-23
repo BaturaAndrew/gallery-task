@@ -42,15 +42,16 @@
       switch(global.env){
         case 'development':
         mongoose.connect(config.get('mongoose.development.db'), opts);
+        log.info('Started connection on ' + (config.get('mongoose.development.db')) + ', waiting for it to open...');
         break;
         case 'production':
         mongoose.connect(config.get('mongoose.production.db'), opts);
+        log.info('Started connection on ' + (config.get('mongoose.production.db')) + ', waiting for it to open...');
         break;
         default:
         throw new Error('Неизвестная среда выполнения: ' +global.env);
         }
 
-      log.info('Started connection on ' + (config.get('mongoose.development.db')) + ', waiting for it to open...');
     } catch (err) {
       log.error(('Setting up failed to connect to ' + config.get('mongoose.development.db')), err.message);
       if (done) done(err);
